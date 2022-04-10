@@ -1,0 +1,60 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Gestion des utilisateurs{% endblock %}
+
+{% block body %}
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    <script src="https://use.fontawesome.com/49b98aaeb5.js"></script>
+    <!-- End -->
+    <center>
+    <i class="fa fa-user fa-3x" aria-hidden="true" style="color:#6495ed"></i>
+   <FONT face="Helvetica" size="8" color="#6495ed" >    Tables des utilisateurs
+       <br> </FONT></center>
+
+    <table border="1"    >
+
+        <tr>
+            <th><center> <FONT face="Helvetica" color="#6495ed" > ID UTILISATEUR </FONT> </center></th>
+            <th> <center> <FONT face="Helvetica" color="#6495ed"> NOM  </FONT> </center></th>
+            <th> <center> <FONT face="Helvetica" color="#6495ed"> PRENOM </FONT> </center> </th>
+            <th> <center> <FONT face="Helvetica" color="#6495ed"> EMAIL</FONT> </center> </th>
+            <th> <center> <FONT face="Helvetica" color="#6495ed"> MOT DE PASSE </FONT> </center> </th>
+            <th> <center> <FONT face="Helvetica" color="#6495ed"> DATE DE NAISSANCE </FONT> </center> </th>
+            <th> <center> <FONT face="Helvetica" color="#6495ed"> ROLE  </FONT> </center> </th>
+            <th> <center> <FONT face="Helvetica" color="#6495ed"> SEXE </FONT></center> </th>
+            <th><center>  <FONT face="Helvetica" color="#6495ed">REGION </FONT></center> </th>
+            <th><center>  <FONT face="Helvetica" color="#6495ed"> ADRESSE </FONT></center> </th>
+            <th><center> <FONT face="Helvetica" color="#6495ed">NUMERO </FONT> </center></th>
+            <th> <center><FONT face="Helvetica" color="#6495ed"> ACTION </FONT></center></th>
+        </tr>
+        <tr {% for u in utilisateur  %}>
+            <td align="center" > {{u.Utilisateur_Id}}</td>
+            <td align="center" > {{u.nom }}</td>
+            <td align="center" > {{u.prenom}} </td>
+            <td align="center" > {{u.email }}</td>
+            <td align="center" > {{u.mdp}} </td>
+            <td align="center" > {{u.datedenaissance}}</td>
+            <td align="center" > {{u.role}}</td>
+            <td align="center" > {{u.sexe }}</td>
+            <td align="center" > {{u.region}}</td>
+            <td align="center" > {{u.adresse}} </td>
+            <td align="center" > {{u.numero}}</td>
+            <td align="center" width="8" height="8">
+                <script src="https://use.fontawesome.com/49b98aaeb5.js"></script>
+            <a href="{{ path('supp',{'id_utilisateur': u.Utilisateur_Id}) }}">  <i class="fa fa-trash fa-1x" aria-hidden="true" style="color:brown"></i>  Supprimer   </a> <br>
+                <a href="{{ path('mod', {'id_utilisateur': u.Utilisateur_Id}) }}"> <i class="fa fa-edit fa-1x" aria-hidden="true" style="color:brown"></i>   Modifier   </a> </td>
+        </tr {%endfor %}>
+       </center>
+    </table>
+
+
+{% endblock %}

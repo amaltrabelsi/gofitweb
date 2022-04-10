@@ -17,7 +17,7 @@ class Utilisateur
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id_utilisateur;
+    private $Utilisateur_Id;
 
     /**
      * @ORM\Column(type="string", length=10)
@@ -77,9 +77,9 @@ class Utilisateur
      */
     private $reponse;
 
-    public function getId_utilisateur(): ?int
+    public function getUtilisateur_Id(): ?int
     {
-        return $this->id_utilisateur;
+        return $this->Utilisateur_Id;
     }
 
     public function getNom(): ?string

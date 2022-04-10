@@ -44,7 +44,7 @@ class UtilisateurController extends AbstractController
         {
             $utilisateur= new utilisateur();
             $form = $this->createForm(AjouterType::class,$utilisateur);
-            $form ->add('Ajouter',SubmitType::class);
+
             $form->handleRequest($request);
             if($form->isSubmitted() && $form->isValid()) {
                 $em=$this->getDoctrine()->getManager();
@@ -58,4 +58,48 @@ class UtilisateurController extends AbstractController
 
         }
 
+    /**
+     * @param UtilisateurRepository $repository
+     * @Route ("AfficheU",name="Affiche")
+     */
+    public function Affiche( UtilisateurRepository $repository)
+    {
+        $utilisateur = $repository->findAll();
+        return $this->render('utilisateur/Afficher.html.twig', [
+            'utilisateur' => $utilisateur
+        ]);
     }
+    /**
+* @Route ("/Supprimer/{id_utilisateur}",name="supp")
+*/
+    public function Supprimer($id_utilisateur) {
+        $utilisateur=$this->getDoctrine()->getRepository(Utilisateur::class)->find($id_utilisateur);
+        $em=$this->getDoctrine()->getManager();
+        $em->remove($utilisateur);
+        $em->flush();
+        return $this->redirectToRoute('Affiche');
+
+    }
+
+    /**
+     * @Route ("/Modifier/{id_utilisateur}",name="mod")
+     */
+    public function Modifier ( Request $request  ,UtilisateurRepository $repository , $id_utilisateur )  {
+        $utilisateur=$repository->find($id_utilisateur);
+
+        $form = $this->createForm(AjouterType::class,$utilisateur);
+        $form ->add('Modifier',SubmitType::class);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()) {
+            $em=$this->getDoctrine()->getManager();
+
+            $em->flush();
+
+            return $this->redirectToRoute('Affiche');
+        }
+
+        return $this->render('utilisateur/modifier.html.twig', ['f' => $form->createView()]);
+    }
+
+
+}

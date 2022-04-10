@@ -1,0 +1,112 @@
+{% extends 'base-front.html.twig' %}
+
+    {% block body %}
+
+        <div class="breadcrumb-section breadcrumb-bg-color--golden">
+            <div class="breadcrumb-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class="breadcrumb-title">Mon Compte</h3>
+                            <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+                                <nav aria-label="breadcrumb">
+                                    <ul>
+                                        <li><a href="index.html">Accueil</a></li>
+                                        <li class="active" aria-current="page">Mon Compte</li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            {{ form_start(f) }}
+            <center><h1>Mon Compte </h1></center>
+            <br>
+            <div class="row">
+                <form class="col s12">
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            {{ form_label(f.Nom) }}
+                            {{ form_widget(f.Nom) }}
+                        </div>
+                        <div class="input-field col s6">
+                            {{ form_label(f.Prenom) }}
+                            {{ form_widget(f.Prenom) }}
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            {{ form_label(f.Email) }}
+                            {{ form_widget(f.Email) }}
+                        </div>
+                        <div class="input-field col s6">
+                            {{ form_label(f.Sexe) }}
+                            {{ form_widget(f.Sexe) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            {{ form_label(f.Adresse) }}
+                            {{ form_widget(f.Adresse) }}
+                        </div>
+                        <div class="input-field col s6">
+                            {{ form_label(f.Region) }}
+                            {{ form_widget(f.Region) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            {{ form_label(f.Role) }}
+                            {{ form_widget(f.Role) }}
+                        </div>
+                        <div class="input-field col s6">
+                            {{ form_label(f.Mdp) }}
+                            {{ form_widget(f.Mdp) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            {{ form_label(f.question) }}
+                            {{ form_widget(f.question) }}
+                        </div>
+                        <div class="input-field col s6">
+                            {{ form_label(f.reponse) }}
+                            {{ form_widget(f.reponse) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            {{ form_label(f.Numero) }}
+                            {{ form_widget(f.Numero) }}
+                        </div>
+
+                        <div class="input-field col s6">
+                            {{ form_label(f.Datedenaissance )  }}
+                            {{ form_widget(f.Datedenaissance)}}
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br><br>
+                    <br>
+
+                    <center>{{ form_end(f) }}</center>
+                    <br>
+                    <br>
+                    <br><br>
+                    <br>
+
+                </form>
+
+
+            </div>
+
+        </div>
+    {% endblock %}
+
