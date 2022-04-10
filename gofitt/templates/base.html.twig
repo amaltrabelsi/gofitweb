@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            <link rel="shortcut icon" href="{{ asset('assets/images/favicon.icon')}}" type="image/png">
+            <link rel="stylesheet" href="{{ asset('assets/css/vendor/vendor.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/plugins/plugins.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}">
+
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="{{ asset('assets/js/vendor/vendor.min.js')}}"></script>
+            <script src="{{ asset('assets/js/plugins/plugins.min.js')}}"></script>
+        {% endblock %}
+    </head>
+    <body>
+
+        {% block body %}{% endblock %}
+    </body>
+</html>

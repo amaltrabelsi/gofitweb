@@ -1,0 +1,24 @@
+{% extends 'base-front.html.twig' %}
+
+
+    {% block body %}
+        <div class="container">
+            <center><h1>S'inscrire</h1></center>
+
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            {{ form_label(fa.Nom) }}
+                            {{ form_widget(fa.Nom) }}
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
+        {{ form_end(fa) }}
+    {% endblock %}
+
