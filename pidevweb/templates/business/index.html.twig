@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BusinessController!{% endblock %}
+
+{% block body %}
+<div class="row">
+
+    <div  style="display: flex;align-items: center;
+        justify-content: center;margin-top: 150px; margin-left: 100px;padding: 10px;">
+
+        <!-- column -->
+
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Business</h2>
+                <h6 class="card-subtitle">Gérer vos Boutiques </h6>
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div>
+                                        <h4 class="card-title"><span class="lstick"></span>Boutiques</h4>
+                                    </div>
+                                </div>
+
+                                <table class="table-responsive-lg">
+        <thead class="thead-dark">
+<tr >
+            <th>Business</th>
+    <th>Prenom G</th>
+    <th>Nom G</th>
+    <th>Region</th>
+            <th>
+                        Adresse  </th>
+            <th>Descri </th>
+
+            <th>Date   </th>
+            <th>T.Mobile  </th>
+            <th>T.Fix  <</th>
+                        <th>Supprimer</th>
+                        <th>Modifier</th>
+
+          
+            
+</tr>
+        </thead>
+        <tbody>
+        {% for Business in p %}
+            <tr>
+                <td>{{ Business.nomBusiness}}</td>
+                <td>{{ Business.prenomGerant}}</td>
+                <td>{{Business.nomGerant}}</td>
+                <td>{{ Business.region }}</td>
+                <td>{{Business.adresse }}</td>
+                <td>{{Business.description }}</td>
+                <td>{{Business.dateFondation |date("d/m/Y") }}</td>
+                <td>{{Business.telPortable }}</td>
+                <td>{{Business.telFix }}</td>
+ <td>
+                    <a
+                        class="btn waves-effect waves-light btn-info hidden-md-down text-white"
+                            class="btn btn-group-sm
+" href="{{ path('deleteBusiness',{'id':Business.businessId}) }}"><i
+                                class="mdi mdi-delete-empty"></i></a>
+                </td>
+                <td>
+                    <a
+                       class="btn waves-effect waves-light btn-info hidden-md-down text-white"
+                            class="btn btn-center" href="{{ path('editBusiness',{'id':Business.businessId}) }}">
+                        <i
+                                class="mdi mdi-account-edit"></i></a>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End PAge Content -->
+    <!-- ============================================================== -->
+        </div></div></div>
+<div>
+    <div class="col-md-7 align-self-center">
+        <a href="/createBusiness" class="btn waves-effect waves-light btn-primary pull-right hidden-sm-down"> Ajouter </a>
+    </div></div>
+{% endblock %}

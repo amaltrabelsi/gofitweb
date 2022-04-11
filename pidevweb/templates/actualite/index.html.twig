@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ActualiteController!{% endblock %}
+
+{% block body %}
+
+
+<div class="row">
+
+    <div  style="display: flex;align-items: center;
+        justify-content: center;margin-top: 150px; margin-left: 100px;padding: 10px;">
+
+        <!-- column -->
+
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Actualité</h2>
+                <h6 class="card-subtitle">Gérer vos actualités </h6>
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div>
+                                        <h4 class="card-title"><span class="lstick"></span>Actualités</h4>
+                                    </div>
+                                </div>
+
+                                <table class="table">
+<tr>
+            <th><b>Titre  </b></th>
+            <th><b>Description  </b></th>
+            <th><b>Contenu   </b></th>
+            <th><b>Categorie  </b></th>
+            <th><b>Path_Image  </b></th>
+            <th><b>Supprimer  </b></th>
+            <th><b>Modifier  </b></th>
+          
+            
+</tr>
+        </thead>
+        <tbody>
+        {% for Actualite in p %}
+            <tr>
+                <td>{{ Actualite.titre}}</td>
+                <td>{{ Actualite.description}}</td>
+                <td>{{ Actualite.contenu}}</td>
+                <td>{{ Actualite.categorie }}</td>
+                <td>{{Actualite.pathImage }}</td>
+                <td>
+                    <a
+                        class="btn waves-effect waves-light btn-info hidden-md-down text-white"
+                            class="btn btn-danger" href="{{ path('deleteActualite',{'id':Actualite.actualiteId}) }}">
+                        <i
+                                class="mdi mdi-delete-empty"></i>
+                        </a>
+                </td>
+                <td>
+                    <a
+                        class="btn waves-effect waves-light btn-info hidden-md-down text-white"
+                            class="btn" href="{{ path('editActualite',{'id':Actualite.actualiteId}) }}">
+
+                        <i
+                                class="mdi mdi-account-edit"></i>
+                    </a>
+                </td>
+              
+            </tr>
+
+        {% endfor %}
+        </tbody>
+                    </table>
+                            </div></div></div></div></div></div></div>
+    <div>
+        <div class="col-md-7 align-self-center">
+            <a href="/createActualite" class="btn waves-effect waves-light btn-primary pull-right hidden-sm-down"> Ajouter </a>
+        </div>
+    </div></div>
+
+{% endblock %}
