@@ -1,0 +1,118 @@
+{% extends 'frontBase.html.twig' %}
+
+{% block body %}
+    <!-- ...:::: Start Breadcrumb Section:::... -->
+    <div class="breadcrumb-section breadcrumb-bg-color--golden">
+        <div class="breadcrumb-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h3 class="breadcrumb-title">Panier</h3>
+                        <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+                            <nav aria-label="breadcrumb">
+                                <ul>
+                                    <li><a href="">Acceuil</a></li>
+                                    <li><a href="">Boutique</a></li>
+                                    <li class="active" aria-current="page">Panier</li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- ...:::: End Breadcrumb Section:::... -->
+    <!-- ...:::: Start Cart Section:::... -->
+    <div class="cart-section">
+        <!-- Start Cart Table -->
+        <div class="cart-table-wrapper" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table_desc">
+                            <div class="table_page table-responsive">
+                                <table>
+                                    <!-- Start Cart Table Head -->
+                                    <thead>
+                                    <tr>
+                                        <th class="product_remove">Supprimer</th>
+                                        <th class="product_thumb">Image</th>
+                                        <th class="product_name">Produit</th>
+
+                                        <th class="product_quantity">Quantite</th>
+                                        <th class="product-price">Prix</th>
+
+                                    </tr>
+                                    </thead> <!-- End Cart Table Head -->
+                                    <tbody>
+                                    <!-- Start Cart Single Item-->
+                                    {% for panierP in panier %}
+                                    <tr>
+                                        <td ><a href="{{ path('supprimerProduitPanier',{'id':panierP.panierajoutId}) }}"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                        <td class="product_thumb">
+                                                <img
+                                                        src="{{ asset('/assets/images/' ~ panierP.fkProduitp.pathImage) }}"
+                                                        alt="fault"></td>
+                                        <td class="product_name"><a href="">{{ panierP.fkProduitp.nomProduit }}</a></td>
+
+                                        <td class="product_quantity"><label>1</label>
+                                        <td class="product-price">{{ panierP.fkProduitp.prixUni }} DT</td>
+                                    </tr> <!-- End Cart Single Item-->
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="cart_submit">
+                                <a href="{{ path('vider-panier',{'id':10}) }}" class="btn btn-md btn-golden" type="submit">Vider Panier</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End Cart Table -->
+
+        <!-- Start Coupon Start -->
+        <div class="coupon_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="coupon_code left" >
+                            <h3>Coupon</h3>
+                            <div class="coupon_inner">
+                                <p>Appliquer votre code coupon</p>
+                                <input class="mb-2" placeholder="Coupon code" type="text">
+                                <button type="submit" class="btn btn-md btn-golden">coupon</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="coupon_code right" >
+                            <h3>Total Panier</h3>
+                            <div class="coupon_inner">
+                                <div class="cart_subtotal">
+                                    <p>Total</p>
+                                    <p class="cart_amount"> {{ t }} DT</p>
+                                </div>
+                                <div class="cart_subtotal ">
+                                    <p>Nombre de produits</p>
+                                    <p class="cart_amount">   {{ n }}</p>
+                                </div>
+                                <a href="#">Calculate avec coupon</a>
+
+                                <div class="cart_subtotal">
+                                    <p>Total</p>
+                                    <p class="cart_amount"> {{ t }} DT</p>
+                                </div>
+                                <div class="checkout_btn">
+                                    <a href="{{ path('passerCommande',{'id':10}) }}" class="btn btn-md btn-golden">Passer Commande</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End Coupon Start -->
+    </div> <!-- ...:::: End Cart Section:::... -->
+{% endblock %}

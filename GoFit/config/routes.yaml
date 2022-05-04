@@ -1,0 +1,14 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+ajax_search:
+  path: /search
+  controller: App\Controller\ProduitController::searchAction
+
+
+emailsend:
+  path: /search
+  controller: App\Controller\EmailController::sendEmail
+
+
