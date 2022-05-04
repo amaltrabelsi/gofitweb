@@ -1,0 +1,3 @@
+jax_search:
+    path: /search
+    controller: App\Controller\ActualiteController::searchAction

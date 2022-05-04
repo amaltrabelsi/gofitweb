@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BusinessController!{% endblock %}
+
+{% block body %}
+    <div class="empty"></div>
+    extra &nbsp;&nbsp; space
+    <div class="empty"></div>
+
+    extra &nbsp;&nbsp; space
+    <div class="empty"></div>
+
+    extra &nbsp;&nbsp; space
+    <div class="page-wrapper" style="min-height: 656px;">
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-themecolor">Gérer les Boutiques</h3>
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <a href="{{ '/createBusiness' }}" class="btn waves-effect waves-light btn-danger
+                     pull-right hidden-sm-down"> Créer Boutique</a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div>
+                                    <h4 class="card-title"><span class="lstick"></span>Boutiques</h4>
+                                </div>
+                            </div>
+
+
+
+                            <table class="table-responsive-lg">
+        <thead class="thead-dark">
+<tr >
+            <th><b>Business</b></th>
+    <th><b>Prenom G</b></th>
+    <th><b>Nom G</b></th>
+    <th><b> Region </b> </th>
+            <th>
+                <b> Adresse </b> </th>
+            <th><b>Description</b></th>
+
+            <th><b>Date</b>   </th>
+            <th><b>Mobile </b> </th>
+            <th><b>Fix</b> </th>
+                        <th> <b>Supprimer   </b></th>
+                        <th><b>Modifier </b></th>
+
+          
+            
+</tr>
+        </thead>
+        <tbody>
+        {% for Business in p %}
+            <tr>
+                <td>{{ Business.nomBusiness}}</td>
+                <td>{{ Business.prenomGerant}}</td>
+                <td>{{Business.nomGerant}}</td>
+                <td>{{ Business.region }}</td>
+                <td>{{Business.adresse }}</td>
+                <td>{{Business.description }}</td>
+                <td>{{Business.dateFondation |date("d/m/Y") }}</td>
+                <td>{{Business.telPortable }}</td>
+                <td>{{Business.telFix }}</td>
+ <td>
+                    <a
+                        class="btn waves-effect waves-light btn-info hidden-md-down text-white"
+                            class="btn btn-group-sm
+" href="{{ path('deleteBusiness',{'id':Business.businessId}) }}"><i
+                                class="mdi mdi-delete-empty"></i></a>
+                </td>
+                <td>
+                    <a
+                       class="btn waves-effect waves-light btn-info hidden-md-down text-white"
+                            class="btn btn-center" href="{{ path('editBusiness',{'id':Business.businessId}) }}">
+                        <i
+                                class="mdi mdi-account-edit"></i></a>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+                        </table>
+                        </div></div></div></div></div></div></div>
+
+    <div>
+        <div class="col-md-7 align-self-center">
+        </div>
+    </div><
+    </div>
+{% endblock %}
