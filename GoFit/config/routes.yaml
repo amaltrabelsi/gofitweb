@@ -2,11 +2,22 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
+<<<<<<< Updated upstream
 ajax_search:
+=======
+searchAjax:
+>>>>>>> Stashed changes
   path: /search
   controller: App\Controller\ProduitController::searchAction
 
 
+<<<<<<< Updated upstream
+=======
+ajax_search:
+  path: /search
+  controller: App\Controller\ActualiteController::searchAction
+
+>>>>>>> Stashed changes
 emailsend:
   path: /search
   controller: App\Controller\EmailController::sendEmail

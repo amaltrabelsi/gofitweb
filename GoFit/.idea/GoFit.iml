@@ -143,6 +143,15 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/imagine/imagine" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/google-mailer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mercuryseries/flashy-bundle" />
+<<<<<<< Updated upstream
+=======
+      <excludeFolder url="file://$MODULE_DIR$/vendor/vangrg/profanity-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ramsey/collection" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ramsey/uuid-doctrine" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/ramsey/uuid" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/brick/math" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nesbot/carbon" />
+>>>>>>> Stashed changes
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

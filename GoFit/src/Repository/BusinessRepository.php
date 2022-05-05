@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+<<<<<<< Updated upstream
 
 use App\Entity\Business;
 use Doctrine\Persistence\ManagerRegistry;
@@ -19,4 +20,16 @@ class BusinessRepository extends \Doctrine\Bundle\DoctrineBundle\Repository\Serv
     {
         parent::__construct($registry, Business::class);
     }
+=======
+use App\Entity\Actualite;
+use App\Entity\Business;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
+
+class BusinessRepository extends ServiceEntityRepository
+{
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, Business::class);}
+>>>>>>> Stashed changes
 }

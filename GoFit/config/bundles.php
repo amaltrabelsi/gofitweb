@@ -16,4 +16,8 @@ return [
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
     Liip\ImagineBundle\LiipImagineBundle::class => ['all' => true],
     MercurySeries\FlashyBundle\MercurySeriesFlashyBundle::class => ['all' => true],
+<<<<<<< Updated upstream
+=======
+    Vangrg\ProfanityBundle\VangrgProfanityBundle::class => ['all' => true],
+>>>>>>> Stashed changes
 ];

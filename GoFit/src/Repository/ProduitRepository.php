@@ -42,7 +42,19 @@ class ProduitRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+<<<<<<< Updated upstream
 
+=======
+    public function findProductsByBusiness($id)
+    {
+        return $this->createQueryBuilder('P')
+            ->where('P.fkBusinees = :id')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getResult();
+
+    }
+>>>>>>> Stashed changes
 
 
 

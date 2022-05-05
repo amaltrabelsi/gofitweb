@@ -257,4 +257,29 @@ class ProduitController extends AbstractController
         return $this->redirectToRoute('produit_front');
     }
 
+<<<<<<< Updated upstream
+=======
+
+
+    /**
+     * @param $id
+     * @param ProduitRepository $produitRepository
+     * @return Response
+     * @Route("/ProduitsBusiness/{id}", name="app_produitBusiness")
+     */
+
+    public function produitparBusiness($id, ProduitRepository $produitRepository): Response
+    {
+        $produits = $produitRepository->findProductsByBusiness($id);
+
+        return $this->render('business/businessProducts.html.twig', [
+
+            'p' => $produits]);
+
+    }
+
+
+
+
+>>>>>>> Stashed changes
 }

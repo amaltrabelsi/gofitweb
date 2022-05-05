@@ -1,0 +1,126 @@
+
+{%  extends 'frontBase.html.twig' %}
+ {% block head %}
+     <header>
+         <meta name="_token" content="{{ csrf_token() }}">
+
+     </header>
+ {% endblock %}
+ {% block body %}
+
+
+     <div class="sidebar-search">
+
+         <div class="input-group custom-search-form">
+
+             <input type="text" id="search" class="form-control" placeholder="Search here">
+         </div>
+         <!-- /input-group -->
+     </div>
+     <ul class="nav" id="side-menu">
+         <li>
+             <a href="#"> <span class="fa arrow"></span></a>
+             <ul class="nav nav-second-level" id="entitiesNav">
+             </ul>
+         </li>
+     </ul><br><br><br><br>
+
+
+     <!-- Offcanvas Overlay -->
+     <div class="offcanvas-overlay"></div>
+
+     <!-- ...:::: Start Breadcrumb Section:::... -->
+     <div class="breadcrumb-section breadcrumb-bg-color--golden">
+         <div class="breadcrumb-wrapper">
+             <div class="container">
+                 <div class="row">
+                     <div class="col-12">
+                         <h3 class="breadcrumb-title">Nos Boutiques Partenaires</h3>
+                         <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+                             <nav aria-label="breadcrumb">
+                                 <ul>
+                                     <li><a href="index.html">Home</a></li>
+                                     <li><a href="blog-grid-sidebar-left.html">Boutique</a></li>
+                                     <li class="active" aria-current="page">List</li>
+                                 </ul>
+                             </nav>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div> <!-- ...:::: End Breadcrumb Section:::... -->
+     <div class="sort-product-tab-wrapper">
+         <div class="container">
+             <div class="row">
+                 <div class="col-12">
+                     <div class="tab-content">
+                         <!-- Start Grid View Product -->
+                         <div class="tab-pane active show sort-layout-single" id="layout-4-grid" >
+                             <div class="row">
+                                 {% for p in Business %}
+                                     <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                         <!-- Start Product Default Single Item -->
+                                         <div class="product-default-single-item product-color--golden"
+                                         >
+                                             <div class="image-box">
+                                                 <a href="" class="image-link">
+
+                                                     <img src="{{ asset( '/assets/images/'~ p.pathImage) | imagine_filter('actualite')}}"
+                                                          alt="hi">
+
+                                                 </a>
+                                                 <div class="action-link">
+                                                     <div class="action-link-left">
+                                                         <a href="{{ path('app_produitBusiness',{'id': p.businessId}) }}" >Consulter</a>
+                                                     </div>
+                                                     <div class="action-link-right">
+
+                                                         <a href="{{ path('app_produitBusiness',{'id': p.businessId}) }}"><i
+                                                                     class="icon-magnifier"></i></a>
+
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                             <div class="content">
+                                                 <div class="content-left">
+                                                     <h6 class="title"><a
+                                                                 href="{{ path('app_produitBusiness',{'id': p.businessId}) }}">{{ p.NomBusiness }}</a></h6>
+
+                                                 </div>
+                                                 <div class="content-right">
+                                                     <span class="price">{{ p.Region }}</span>
+                                                 </div>
+
+                                             </div>
+                                         </div>
+
+
+
+
+
+                                         <!-- End Product Default Single Item -->
+                                     </div>
+                                 {% endfor %}
+                             </div>
+                         </div>
+
+
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div> <!-- End Tab Wrapper -->
+
+
+     <div class="page-pagination text-center">
+         <ul>
+             <li class="active">{{ knp_pagination_render(Business) }} </li>
+         </ul>
+     </div> <!-- End Pagination -->
+
+ {%endblock%}
+
+{% block javascripts %}
+    <script src="{{asset('Front/assets/js/filters.js')}}"></script>
+{% endblock %}

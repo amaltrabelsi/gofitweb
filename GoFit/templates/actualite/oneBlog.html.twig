@@ -1,0 +1,249 @@
+
+
+{%  extends 'frontBase.html.twig' %}
+ {% block body %}
+
+
+<!-- ...:::: Start Breadcrumb Section:::... -->
+<div class="breadcrumb-section breadcrumb-bg-color--golden">
+    <div class="breadcrumb-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="breadcrumb-title"> {{ detail.titre}} </h3>
+                    <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+                        <nav aria-label="breadcrumb">
+                            <ul>
+                                <li><a href="">Accueil</a></li>
+                                <li><a href="">Actualite</a></li>
+                                <li class="active" aria-current="page">{{ detail.titre }}</li>
+                            </ul>
+                        </nav>
+                    </div></div></div></div></div></div>
+ <!-- ...:::: End Breadcrumb Section:::... -->
+
+     <!-- Start Product Details Section -->
+     <div class="product-details-section">
+         <div class="container">
+             <div class="row">
+                 <div class="col-xl-5 col-lg-6">
+                     <div class="product-details-gallery-area" >
+                         <!-- Start Large Image -->
+                         <div class="product-large-image product-large-image-horaizontal ">
+                             <div >
+                                 <div class="product-image-large-image   img-responsive">
+                                     <img src="{{ asset('../assets/images/' ~ detail.pathImage) }}" alt="">
+                                 </div>
+
+                             </div>
+                         </div>
+                         <!-- End Large Image -->
+
+                     </div>
+                 </div>
+                 <div class="col-xl-7 col-lg-6">
+                     <div class="product-details-content-area product-details--golden">
+                         <!-- Start  Product Details Text Area-->
+                         <div class="product-details-text">
+                             <h4 class="title">{{ detail.titre }}</h4>
+                             <div class="d-flex align-items-center">
+                                 <i class="star" data-note="1">&#9733;</i>
+                                 <i class="star" data-note="2">&#9733;</i>
+                                 <i class="star" data-note="3">&#9733;</i>
+                                 <i class="star" data-note="4">&#9733;</i>
+                                 <i class="star" data-note="5">&#9733;</i>
+                                 <i class="note"> Note: </i>
+
+
+
+                                 <script>
+
+                                     const stars = document.querySelectorAll('.star');
+                                     let check = false;
+                                     stars.forEach(star => {
+                                         star.addEventListener('mouseover', selectStars);
+                                         star.addEventListener('mouseleave', unselectStars);
+                                         star.addEventListener('click', activeSelect);
+                                     })
+
+
+                                     function selectStars(e) {
+                                         const data = e.target;
+                                         const etoiles = priviousSiblings(data);
+                                         if (!check) {
+                                             etoiles.forEach(etoile => {
+                                                 etoile.classList.add('hover');
+                                                 this.style.color = "red";
+                                                 this.classList.add("las");
+                                                 this.classList.remove("lar");
+                                                 let previousStar = this.previousElementSibling;
+                                                 while(previousStar){
+                                                     // On passe l'étoile qui précède en rouge
+                                                     previousStar.style.color = "red";
+                                                     previousStar.classList.add("las");
+                                                     previousStar.classList.remove("lar");
+                                                     // On récupère l'étoile qui la précède
+                                                     previousStar = previousStar.previousElementSibling;}
+                                             })
+                                         }
+
+                                     }
+
+                                     function unselectStars(e) {
+                                         const data = e.target;
+                                         const etoiles = priviousSiblings(data);
+                                         if (!check) {
+                                             etoiles.forEach(etoile => {
+                                                 etoile.classList.remove('hover');
+                                             })
+                                         }
+                                     }
+                                     function activeSelect(e) {
+                                         if (!check) {
+                                             check = true;
+                        document.querySelector('.note').innerHTML = 'Note ' + e.target.dataset.note;
+
+                                         }
+                                     }
+
+                                     function priviousSiblings(data) {
+                                         let values = [data];
+                                         while (data = data.previousSibling) {
+                                             if (data.nodeName === 'I') {
+                                                 values.push(data);
+                                             }
+                                         }
+                                         return values;
+
+                                     }
+                                 </script>
+
+                                 <script>
+    const act = document.getElementsByClassName("note")[0].value;
+
+</script>
+
+                                 <a href="#" class="customer-review ml-2">(Avis Article )</a>
+                             </div>
+                             <div class="price">{{ detail.categorie }} </div>
+                             <p>Description: {{ detail.description }}</p>
+                         </div> <!-- End  Product Details Text Area-->
+                         <!-- Start Product Variable Area -->
+                         <div class="product-details-variable">
+                             <div class="price">{{ detail.contenu}} </div>
+                             <h4 class="post-title" data-aos="fade-up" data-aos-delay="400">{{ detail.titre }}</h4>
+                             <div class="para-content" data-aos="fade-up" data-aos-delay="600">
+                                 </blockquote>
+                                 <p>{{ detail.contenu }}</p>
+                             </div>
+
+                             </div>
+                         <div class="para-tags" data-aos="fade-up" data-aos-delay="0">
+                             <span>Tags: </span>
+                             <ul>
+                                 <li><a href="#">fashion</a></li>
+                                 <li><a href="#">t-shirt</a></li>
+                                 <li><a href="#">white</a></li>
+                             </ul>
+                         </div>
+                             <!-- Product Variable Single Item -->
+                             <div class="d-flex align-items-center ">
+                                 <div class="variable-single-item ">
+
+                                 </div>
+                                 <a href=" {{ path('pdfact',{'id':detail.actualiteId})  }}" class="btn btn-md btn-golden" >Télécharger PDF</a>                         </div>
+                             </div>
+                             <!-- Start  Product Details Meta Area-->
+                             <div class="product-details-meta mb-20">
+
+                             </div> <!-- End  Product Details Meta Area-->
+                         </div> <!-- End Product Variable Area -->
+
+                         <!-- Start  Product Details Catagories Area-->
+                         <div class="product-details-catagory mb-2">
+                             <span class="title">CATEGORIE: {{ detail.categorie }}</span>
+                             <ul>
+                                 {#                                <li><a href="#">BAR STOOL</a></li>#}
+                                 {#                                <li><a href="#">KITCHEN UTENSILS</a></li>#}
+                                 {#                                <li><a href="#">TENNIS</a></li>#}
+                             </ul>
+                         </div> <!-- End  Product Details Catagories Area-->
+                         <!-- Start  Product Details Social Area-->
+                   <!-- End  Product Details Social Area-->
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div> <!-- End Product Details Section -->
+
+     <!-- Start Product Content Tab Section -->
+
+     <!-- Start Product Default Slider Section -->
+     <div class="product-default-slider-section section-top-gap-100 section-fluid">
+         <!-- Start Section Content Text Area -->
+
+         </div>
+         <!-- Start Section Content Text Area -->
+         <div class="product-wrapper aos-init aos-animate">
+             <div class="container">
+                 <div class="row">
+                     <div class="col-12">
+                         <div class="product-slider-default-1row default-slider-nav-arrow">
+                             <!-- Slider main container -->
+                             <div class="swiper-container product-default-slider-4grid-1row swiper-container-initialized swiper-container-horizontal">
+                                 <!-- Additional required wrapper -->
+                                 <div class="swiper-wrapper" id="swiper-wrapper-41b4ac6e10451f14" aria-live="polite" style="transform: translate3d(-2160px, 0px, 0px); transition: all 0ms ease 0s;">
+
+
+                                         <!-- Start Product Default Single Item -->
+                                         <div class="product-default-single-item product-color--golden swiper-slide" role="group" aria-label="2 / 8" style="width: 330px; margin-right: 30px;">
+                                             <div class="image-box">
+                                                 <a href="" class="image-link">
+
+                                                     <img src="{{ asset('../assets/images/' ~ detail.pathImage)  | imagine_filter('actualiteindiv')   }}"
+                                                          alt="hi">
+                                                 </a>
+
+
+                                             </div>
+                                             </div>
+                                             <div class="content">
+                                                 <div class="content-left">
+                                                     <h6 class="title"><a href="product-details-default.html">{{ detail.titre }}</a></h6>
+
+                                                 </div>
+
+
+
+                                                 <div class="content-right">
+                                                     <span class="price">{{ detail.contenu}} </span>
+                                                 </div>
+
+                                             </div>
+                                         </div>
+                                         <!-- End Product Default Single Item -->
+                                     <!-- End Product Default Single Item -->
+                                 </div>
+                                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                             <!-- If we need navigation buttons -->
+                             <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-41b4ac6e10451f14" aria-disabled="false"></div>
+                             <div class="swiper-button-next swiper-button-disabled" tabindex="-1" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-41b4ac6e10451f14" aria-disabled="true"></div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <!-- End Product Default Slider Section -->
+
+
+
+
+                     </div>
+                 </div>
+
+
+
+
+
+ {% endblock %}

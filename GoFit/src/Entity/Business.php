@@ -5,6 +5,10 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+<<<<<<< Updated upstream
+=======
+use Symfony\Component\Validator\Constraints as Assert;
+>>>>>>> Stashed changes
 
 /**
  * Business
@@ -12,6 +16,12 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="business", indexes={@ORM\Index(name="CompteHer_Id", columns={"User_Id"})})
  * @ORM\Entity(repositoryClass="App\Repository\BusinessRepository")
  */
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
 class Business
 {
     /**
@@ -21,28 +31,63 @@ class Business
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
+<<<<<<< Updated upstream
     private $businessId;
 
     /**
+=======
+
+    private $businessId;
+
+    /**
+     * @Assert\NotBlank(message="nom business doit etre non vide")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 100,
+     *      minMessage = "Veuillez saisir une marque valide
+     *
+     *
+     * >=2",
+     *      maxMessage = "Veuillez saisir une marque valide <=100" )
+>>>>>>> Stashed changes
      * @var string
      *
      * @ORM\Column(name="Nom_Business", type="string", length=30, nullable=false)
      */
     private $nomBusiness;
+<<<<<<< Updated upstream
     public function __toString() {
         return $this->nomBusiness;
     }
 
     /**
+=======
+
+    /**
+     * @Assert\NotBlank(message="nom gérant doit etre non vide")
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 100,
+     *      minMessage = "Veuillez saisir un nom valide
+     *
+     *
+     * >=3",
+     *      maxMessage = "Veuillez saisir un nom valide <=100" )
+>>>>>>> Stashed changes
      * @var string
      *
      * @ORM\Column(name="Nom_Gerant", type="string", length=30, nullable=false)
      */
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     private $nomGerant;
 
     /**
      * @var string
      *
+<<<<<<< Updated upstream
      * @ORM\Column(name="Prenom_Gerant", type="string", length=30, nullable=false)
      */
     private $prenomGerant;
@@ -50,16 +95,59 @@ class Business
     /**
      * @var string
      *
+=======
+     *   @Assert\NotBlank(message="nom business doit etre non vide")
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 100,
+     *      minMessage = "Veuillez saisir un prénom valide
+     *
+     *
+     * >=2",
+     *      maxMessage = "Veuillez saisir une pfdnom valide <=100" )
+     * @ORM\Column(name="Prenom_Gerant", type="string", length=30, nullable=false)
+     */
+
+    private $prenomGerant;
+
+
+
+
+
+    /**
+     * @var string
+     *
+     *
+>>>>>>> Stashed changes
      * @ORM\Column(name="Region", type="string", length=30, nullable=false)
      */
     private $region;
 
+<<<<<<< Updated upstream
     /**
      * @var string
      *
      * @ORM\Column(name="Adresse", type="string", length=100, nullable=false)
      */
     private $adresse;
+=======
+
+
+
+
+
+    /**
+     * @var string
+     *   @Assert\NotBlank(message="L'adresse doit etre non-vide")
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 100,
+     *      minMessage = "Veuillez saisir une adresse valide >10car")
+     *      maxMessage = "Veuillez saisir une adresse valide <=100car" )
+     * @ORM\Column(name="Adresse", type="string", length=100, nullable=false)
+     */
+    private  $adresse;
+>>>>>>> Stashed changes
 
     /**
      * @var \DateTime
@@ -68,22 +156,44 @@ class Business
      */
     private $dateFondation;
 
+<<<<<<< Updated upstream
     /**
      * @var string
      *
      * @ORM\Column(name="Description", type="text", length=65535, nullable=false)
      */
+=======
+
+    /**
+
+     *   @Assert\NotBlank(message="Décrire la boutique")
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 100,
+     *      minMessage = "Veuillez saisir une description valide>=2",
+     *      maxMessage = "Veuillez saisir une description valide <=100" )
+     * @ORM\Column(name="Description", type="text", length=65535, nullable=false)
+     * @var string
+     */
+
+>>>>>>> Stashed changes
     private $description;
 
     /**
      * @var string
      *
+<<<<<<< Updated upstream
+=======
+     * @Assert\Length(min = 8, max = 14, minMessage = "min_lenght", maxMessage = "max_lenght")
+
+>>>>>>> Stashed changes
      * @ORM\Column(name="Tel_Portable", type="string", length=10, nullable=false)
      */
     private $telPortable;
 
     /**
      * @var string|null
+<<<<<<< Updated upstream
      *
      * @ORM\Column(name="Tel_Fix", type="string", length=10, nullable=true, options={"default"="NULL"})
      */
@@ -91,11 +201,26 @@ class Business
 
     /**
      * @var string
+=======
+     * @Assert\Length(min = 8, max = 14, minMessage = "min_lenght", maxMessage = "max_lenght")
+     * @ORM\Column(name="Tel_Fix", type="string", length=10, nullable=false)
+     */
+
+    private $telFix ;
+
+    /**
+     * @var string|null
+>>>>>>> Stashed changes
      *
      * @ORM\Column(name="Path_Image", type="text", length=65535, nullable=false)
      */
     private $pathImage;
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
     /**
      * @var int|null
      *
@@ -128,6 +253,25 @@ class Business
     private $user;
 
     /**
+<<<<<<< Updated upstream
+=======
+     * @return string|null
+     */
+    public function getPathImage(): ?string
+    {
+        return $this->pathImage;
+    }
+
+    /**
+     * @param string|null $pathImage
+     */
+    public function setPathImage(?string $pathImage): void
+    {
+        $this->pathImage = $pathImage;
+    }
+
+    /**
+>>>>>>> Stashed changes
      * @return int
      */
     public function getBusinessId(): int
@@ -146,7 +290,11 @@ class Business
     /**
      * @return string
      */
+<<<<<<< Updated upstream
     public function getNomBusiness(): string
+=======
+    public function getNomBusiness(): ?string
+>>>>>>> Stashed changes
     {
         return $this->nomBusiness;
     }
@@ -162,7 +310,11 @@ class Business
     /**
      * @return string
      */
+<<<<<<< Updated upstream
     public function getNomGerant(): string
+=======
+    public function getNomGerant(): ?string
+>>>>>>> Stashed changes
     {
         return $this->nomGerant;
     }
@@ -178,7 +330,11 @@ class Business
     /**
      * @return string
      */
+<<<<<<< Updated upstream
     public function getPrenomGerant(): string
+=======
+    public function getPrenomGerant(): ?string
+>>>>>>> Stashed changes
     {
         return $this->prenomGerant;
     }
@@ -194,7 +350,11 @@ class Business
     /**
      * @return string
      */
+<<<<<<< Updated upstream
     public function getRegion(): string
+=======
+    public function getRegion(): ?string
+>>>>>>> Stashed changes
     {
         return $this->region;
     }
@@ -210,7 +370,11 @@ class Business
     /**
      * @return string
      */
+<<<<<<< Updated upstream
     public function getAdresse(): string
+=======
+    public function getAdresse(): ?string
+>>>>>>> Stashed changes
     {
         return $this->adresse;
     }
@@ -226,7 +390,11 @@ class Business
     /**
      * @return \DateTime
      */
+<<<<<<< Updated upstream
     public function getDateFondation(): \DateTime
+=======
+    public function getDateFondation(): ?\DateTimeInterface
+>>>>>>> Stashed changes
     {
         return $this->dateFondation;
     }
@@ -242,7 +410,11 @@ class Business
     /**
      * @return string
      */
+<<<<<<< Updated upstream
     public function getDescription(): string
+=======
+    public function getDescription(): ?string
+>>>>>>> Stashed changes
     {
         return $this->description;
     }
@@ -258,7 +430,11 @@ class Business
     /**
      * @return string
      */
+<<<<<<< Updated upstream
     public function getTelPortable(): string
+=======
+    public function getTelPortable(): ?string
+>>>>>>> Stashed changes
     {
         return $this->telPortable;
     }
@@ -288,6 +464,7 @@ class Business
     }
 
     /**
+<<<<<<< Updated upstream
      * @return string
      */
     public function getPathImage(): string
@@ -304,6 +481,8 @@ class Business
     }
 
     /**
+=======
+>>>>>>> Stashed changes
      * @return int|null
      */
     public function getNote(): ?int
@@ -351,7 +530,10 @@ class Business
         $this->occurence = $occurence;
     }
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     /**
      * @return \Utilisateur|null
      */
@@ -367,6 +549,11 @@ class Business
         return $this;
     }
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Produit", mappedBy="business"
      * )
@@ -385,4 +572,9 @@ class Business
     {
         return $this->produits;
     }
+<<<<<<< Updated upstream
 }
+=======
+
+}
+>>>>>>> Stashed changes

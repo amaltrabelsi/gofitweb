@@ -1,0 +1,212 @@
+
+{%  extends 'frontBase.html.twig' %}
+ {% block head %}
+<header>
+    <meta name="_token" content="{{ csrf_token() }}">
+
+</header>
+{% endblock %}
+
+ {% block body %}
+
+
+     <div class="sidebar-search">
+
+         <div class="input-group custom-search-form">
+
+             <input type="text" id="search" class="form-control" placeholder="Search here">
+         </div>
+         <!-- /input-group -->
+     </div>
+     <ul class="nav" id="side-menu">
+         <li>
+             <a href="#"> <span class="fa arrow"></span></a>
+             <ul class="nav nav-second-level" id="entitiesNav">
+             </ul>
+         </li>
+     </ul><br><br><br><br>
+
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+     <script type="text/javascript">
+         jQuery(document).ready(function() {
+             var searchRequest = null;
+             $("#search").keyup(function () {
+                 var minlength = 2;
+                 var that = this;
+                 var value = $(this).val();
+
+                 var entitySelector = $("#entitiesNav").html('');
+                 if (value.length >= minlength) {
+
+                     if (searchRequest != null)
+                         searchRequest.abort();
+                     searchRequest = $.ajax({
+
+type:"GET",                         url: "{{ path('ajax_search') }}",
+                         data: {
+                             'q': value
+                         },
+
+                         dataType: "text",
+                         success: function (msg) {
+
+                             //we need to check if the value is the same
+                             if (value === $(that).val()) {
+
+                                 var result = JSON.parse(msg);
+                                 $.each(result, function (key, arr) {
+                                     $.each(arr, function (id, value) {
+                                         if (key === 'actualites') {
+                                             if (id !== 'error') {
+                                                 console.log(value[1]);
+
+                                                 entitySelector.append('<div><li><b>'+value[0]+
+                                                     '</b><a href="/oneBlog/'+id+'">'
+                                                     +'<img src="/assets/images/logo.png" ' +
+                                                     'style="width: 50px; height: 50px"/>'+'</a></li></div>');
+                                             } else {
+                                                 entitySelector.append('<li class="errorLi">' + value + '</li>');
+                                             }
+                                         }
+                                     });
+                                 });
+                             }
+                         }
+                     });
+                 }
+             });
+         });
+     </script>
+
+     <!-- Offcanvas Overlay -->
+     <div class="offcanvas-overlay"></div>
+
+     <!-- ...:::: Start Breadcrumb Section:::... -->
+     <div class="breadcrumb-section breadcrumb-bg-color--golden">
+         <div class="breadcrumb-wrapper">
+             <div class="container">
+                 <div class="row">
+                     <div class="col-12">
+                         <h3 class="breadcrumb-title">Actualités De Fitness</h3>
+                         <div class="breadcrumb-nav breadcrumb-nav-color--black breadcrumb-nav-hover-color--golden">
+                             <nav aria-label="breadcrumb">
+                                 <ul>
+                                     <li><a href="index.html">Home</a></li>
+                                     <li><a href="blog-grid-sidebar-left.html">Blog</a></li>
+                                     <li class="active" aria-current="page">Actualités</li>
+                                 </ul>
+                             </nav>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div> <!-- ...:::: End Breadcrumb Section:::... -->
+
+     <!-- ...:::: Start Blog List Section:::... -->
+     <div class="blog-section">
+         <div class="container">
+             <div class="row flex-column-reverse flex-lg-row">
+                 <div class="col-lg-3">
+                     <!-- Start Sidebar Area -->
+                     <div class="siderbar-section" >
+
+                         <!-- Start Single Sidebar Widget -->
+                         <div class="sidebar-single-widget">
+                             <h6 class="sidebar-title">Search</h6>
+                             <div class="default-search-style d-flex">
+                                 <input class="default-search-style-input-box" type="search" placeholder="Search..."
+                                        required>
+                                 <button class="default-search-style-input-btn" type="submit"><i
+                                             class="fa fa-search"></i></button>
+                             </div>
+                         </div> <!-- End Single Sidebar Widget -->
+
+                         <!-- Start Single Sidebar Widget -->
+                         <div class="sidebar-single-widget">
+                             <h6 class="sidebar-title">CATEGORIES</h6>
+                             <div class="sidebar-content">
+                                 <ul class="sidebar-menu">
+                                     <li><a href="#">Sport</a></li>
+                                     <li><a href="#">Fitness</a></li>
+                                     <li><a href="#">Higiene de vie</a></li>
+                                     <li><a href="#">Matchs</a></li>
+                                     <li><a href="#">Shopping</a></li>
+                                     <li><a href="#"> Alimentaire</a></li>
+
+                                 </ul>
+                             </div>
+                         </div> <!-- End Single Sidebar Widget -->
+
+                         <!-- Start Single Sidebar Widget -->
+                         <div class="sidebar-single-widget">
+                             <h6 class="sidebar-title">Tags</h6>
+                             <div class="sidebar-content">
+                                 <div class="tag-link">
+                                     <a href="#">match</a>
+                                     <a href="#">resultat</a>
+                                     <a href="#">foot</a>
+                                     <a href="#">soldes</a>
+                                 </div>
+                             </div>
+                         </div> <!-- End Single Sidebar Widget -->
+
+
+
+
+                     </div> <!-- End Sidebar Area -->
+                 </div>
+
+                 <div class="col-lg-9">
+                     <div class="blog-wrapper">
+                         <div class="row mb-n6">
+                             <div class="col-12 mb-6">
+                                 <!-- Start Product Default Single Item -->
+                                 {% for p in Actualite %}
+                                  <div class="blog-list blog-list-single-item blog-color--golden" >
+                                     <div class="row">
+                                         <div class="col-xl-5 col-md-6">
+                                             <div class="col-md-4">  <a href="{{ path('one_Blog',{'id':p.ActualiteId}) }}">
+
+
+                                                 <img src="{{ asset( 'assets/images/'~ p.pathImage) | imagine_filter('actualite')}}"  alt="image">
+
+                                                 </a>
+                                             </div>
+                                         </div>
+                                         <div class="col-xl-7 col-md-6">
+                                             <div class="content">
+                                                 <ul class="post-meta">
+                                                     <li>Ajouté par : <a href="#" class="author">Admin</a></li>
+                                                     <li>Catégorie: <a href="#" class="date">{{ p.categorie }}</a></li>
+                                                 </ul>
+                                                 <h6 class="title"><a href="blog-single-sidebar-left.html"> {{ p.titre }}</a></h6>
+                                       <p> {{ p.description }}</p>
+                                                 <a href="{{ path('one_Blog',{'id': p.actualiteId}) }}" class="read-more-btn icon-space-left">Consulter <span
+                                                             class="icon"><i class="ion-ios-arrow-thin-right"></i></span></a>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <!-- End Product Default Single Item -->
+                                 {% endfor %}
+                             </div>
+
+
+
+                 </div>
+             </div>
+         </div>
+     </div> <!-- ...:::: End List Section:::... -->
+             <div class="page-pagination text-center">
+                 <ul>
+                     <li class="active">{{ knp_pagination_render(Actualite) }} </li>
+                 </ul>
+             </div> <!-- End Pagination -->
+         </div>
+         </div></div>
+ {%endblock%}
+{% block javascripts %}
+    <script src="{{asset('Front/assets/js/filters.js')}}"></script>
+{% endblock %}
