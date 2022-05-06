@@ -52,9 +52,9 @@ class Actualite
     /**
      * @var string|null
      *
-     * @ORM\Column(name="Path_Image", type="string", length=450, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="Path_Image", type="string", length=450, nullable=true, options={"default"="'NULL'"})
      */
-    private $pathImage = 'NULL';
+    private $pathImage = '\'NULL\'';
 
     /**
      * @var \Utilisateur

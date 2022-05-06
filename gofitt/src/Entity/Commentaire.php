@@ -36,16 +36,6 @@ class Commentaire
     private $dateComm;
 
     /**
-     * @var \Produit
-     *
-     * @ORM\ManyToOne(targetEntity="Produit")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="FK_Prod", referencedColumnName="Produit_Id")
-     * })
-     */
-    private $fkProd;
-
-    /**
      * @var \Actualite
      *
      * @ORM\ManyToOne(targetEntity="Actualite")
@@ -64,6 +54,16 @@ class Commentaire
      * })
      */
     private $fkUtilisateur;
+
+    /**
+     * @var \Produit
+     *
+     * @ORM\ManyToOne(targetEntity="Produit")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="FK_Prod", referencedColumnName="Produit_Id")
+     * })
+     */
+    private $fkProd;
 
 
 }

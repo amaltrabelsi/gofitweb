@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Avis
  *
- * @ORM\Table(name="avis", indexes={@ORM\Index(name="FK_Produit_Id", columns={"FK_Produit_Id"}), @ORM\Index(name="FKservice_id", columns={"FK_Service"}), @ORM\Index(name="Fk_utilisateurAvis_id", columns={"Fk_utilisateur_id"})})
+ * @ORM\Table(name="avis", indexes={@ORM\Index(name="FK_Produit_Id", columns={"FK_Produit_Id"}), @ORM\Index(name="FK_Service", columns={"FK_Service"}), @ORM\Index(name="Fk_utilisateurAvis_id", columns={"Fk_utilisateur_id"})})
  * @ORM\Entity
  */
 class Avis
@@ -29,16 +29,6 @@ class Avis
     private $valeur;
 
     /**
-     * @var \Service
-     *
-     * @ORM\ManyToOne(targetEntity="Service")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="FK_Service", referencedColumnName="Service_Id")
-     * })
-     */
-    private $fkService;
-
-    /**
      * @var \Produit
      *
      * @ORM\ManyToOne(targetEntity="Produit")
@@ -57,6 +47,16 @@ class Avis
      * })
      */
     private $fkUtilisateur;
+
+    /**
+     * @var \Service
+     *
+     * @ORM\ManyToOne(targetEntity="Service")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="FK_Service", referencedColumnName="Service_Id")
+     * })
+     */
+    private $fkService;
 
 
 }

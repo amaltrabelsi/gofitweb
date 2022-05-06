@@ -22,16 +22,6 @@ class Panier
     private $panierajoutId;
 
     /**
-     * @var \Utilisateur
-     *
-     * @ORM\ManyToOne(targetEntity="Utilisateur")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="FK_UserClient", referencedColumnName="Utilisateur_Id")
-     * })
-     */
-    private $fkUserclient;
-
-    /**
      * @var \Produit
      *
      * @ORM\ManyToOne(targetEntity="Produit")
@@ -40,6 +30,16 @@ class Panier
      * })
      */
     private $fkProduitp;
+
+    /**
+     * @var \Utilisateur
+     *
+     * @ORM\ManyToOne(targetEntity="Utilisateur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="FK_UserClient", referencedColumnName="Utilisateur_Id")
+     * })
+     */
+    private $fkUserclient;
 
 
 }

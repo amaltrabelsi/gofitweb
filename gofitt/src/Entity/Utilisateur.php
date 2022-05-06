@@ -2,240 +2,185 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * Utilisateur
- *
- * @ORM\Table(name="utilisateur")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-class Utilisateur
+class Utilisateur implements UserInterface
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $Utilisateur_Id;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=180, unique=true)
      */
-    private $Nom;
+    private $email;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="json")
      */
-    private $Prenom;
+    private $roles = [];
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string The hashed password
+     * @ORM\Column(type="string")
      */
-    private $Email;
+    private $password;
+
 
     /**
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $Mdp;
+    private $activation_token;
 
     /**
-     * @ORM\Column(type="string", length=22)
+     * @ORM\Column(type="string")
      */
-    private $Datedenaissance;
+    private $num;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $Adresse;
+    private $reset_token;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $Region;
+    protected $captchaCode;
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $Numero;
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
+    }
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $Role;
 
-    /**
-     * @ORM\Column(type="string", length=7)
-     */
-    private $Sexe;
-    /**
-     * @ORM\Column(type="string", length=7)
-     */
-    private $question;
-    /**
-     * @ORM\Column(type="string", length=7)
-     */
-    private $reponse;
-
-    public function getUtilisateur_Id(): ?int
+    public function getUtilisateur_Id()
     {
         return $this->Utilisateur_Id;
     }
 
-    public function getNom(): ?string
+    public function setUtilisateur_Id($Utilisateur_Id): self
     {
-        return $this->Nom;
-    }
-
-    public function setNom(string $Nom): self
-    {
-        $this->Nom = $Nom;
-
+        $this->Utilisateur_Id = $Utilisateur_Id;
         return $this;
     }
 
-    public function getPrenom(): ?string
-    {
-        return $this->Prenom;
-    }
 
-    public function setPrenom(string $Prenom): self
-    {
-        $this->Prenom = $Prenom;
-
-        return $this;
-    }
 
     public function getEmail(): ?string
     {
-        return $this->Email;
+        return $this->email;
     }
 
-    public function setEmail(string $Email): self
+    public function setEmail(string $email): self
     {
-        $this->Email = $Email;
-
-        return $this;
-    }
-
-    public function getMdp(): ?string
-    {
-        return $this->Mdp;
-    }
-
-    public function setMdp(string $Mdp): self
-    {
-        $this->Mdp = $Mdp;
-
-        return $this;
-    }
-
-    public function getDatedenaissance(): ?string
-    {
-        return $this->Datedenaissance;
-    }
-
-    public function setDatedenaissance(string $Datedenaissance): self
-    {
-        $this->Datedenaissance = $Datedenaissance;
-
-        return $this;
-    }
-
-    public function getAdresse(): ?string
-    {
-        return $this->Adresse;
-    }
-
-    public function setAdresse(string $Adresse): self
-    {
-        $this->Adresse = $Adresse;
-
-        return $this;
-    }
-
-    public function getRegion(): ?string
-    {
-        return $this->Region;
-    }
-
-    public function setRegion(string $Region): self
-    {
-        $this->Region = $Region;
-
-        return $this;
-    }
-
-    public function getNumero(): ?string
-    {
-        return $this->Numero;
-    }
-
-    public function setNumero(string $Numero): self
-    {
-        $this->Numero = $Numero;
-
-        return $this;
-    }
-
-    public function getRole(): ?string
-    {
-        return $this->Role;
-    }
-
-    public function setRole(string $Role): self
-    {
-        $this->Role = $Role;
-
-        return $this;
-    }
-
-    public function getSexe(): ?string
-    {
-        return $this->Sexe;
-    }
-
-    public function setSexe(string $Sexe): self
-    {
-        $this->Sexe = $Sexe;
+        $this->email = $email;
 
         return $this;
     }
 
     /**
-     * @return mixed
+     * @see UserInterface
      */
-    public function getQuestion()
+    public function getRoles(): array
     {
-        return $this->question;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
-    /**
-     * @param mixed $question
-     * @return Utilisateur
-     */
-    public function setQuestion($question)
+    public function setRoles(array $roles): self
     {
-        $this->question = $question;
+        $this->roles = $roles;
+
         return $this;
     }
 
     /**
-     * @return mixed
+     * @see UserInterface
      */
-    public function getReponse()
+    public function getPassword(): string
     {
-        return $this->reponse;
+        return (string) $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+
+        return $this;
     }
 
     /**
-     * @param mixed $reponse
-     * @return Utilisateur
+     * @see UserInterface
      */
-    public function setReponse($reponse)
+    public function getSalt()
     {
-        $this->reponse = $reponse;
+        // not needed when using the "bcrypt" algorithm in security.yaml
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+    public function getactivation_token(): ?string
+    {
+        return $this->activation_token;
+    }
+
+    public function setactivationToken($activation_token): self
+    {
+        $this->activation_token = $activation_token;
+
         return $this;
     }
+
+
+    public function getNum(): ?int
+    {
+        return $this->num;
+    }
+
+    public function setNum(int $num): self
+    {
+        $this->num = $num;
+
+        return $this;
+    }
+
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+    }
+    public function getResetToken(): ?string
+    {
+        return $this->reset_token;
+    }
+
+    public function setResetToken(?string $reset_token): self
+    {
+        $this->reset_token = $reset_token;
+
+        return $this;
+    }
+
 
 }

@@ -1,0 +1,70 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Gestion des utilisateurs{% endblock %}
+
+{% block body %}
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td,
+        th {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    <script src="https://use.fontawesome.com/49b98aaeb5.js"></script>
+    <!-- End -->
+    <center>
+        <i class="fa fa-user fa-3x" aria-hidden="true" style="color:#6495ed"></i>
+        <FONT face="Helvetica" size="8" color="#6495ed" >    Tables des utilisateurs
+            <br> </FONT></center>
+    <div class="fw-divider-space " style="padding-top: 20px;"></div>
+    <div class="jumbotron">
+
+
+        <table>
+
+            <tr>
+                <th><center> <FONT face="Helvetica" color="#6495ed" > ID UTILISATEUR </FONT> </center></th>
+                <th> <center> <FONT face="Helvetica" color="#6495ed"> EMAIL</FONT> </center> </th>
+                <th> <center> <FONT face="Helvetica" color="#6495ed"> ROLE  </FONT> </center> </th>
+                <th><center> <FONT face="Helvetica" color="#6495ed">NUMERO </FONT> </center></th>
+                <th><center> <FONT face="Helvetica" color="#6495ed">Etat Compte </FONT> </center></th>
+                <th> <center><FONT face="Helvetica" color="#6495ed"> ACTION </FONT></center></th>
+            </tr>
+            {% for u in utilisateur  %}
+            <tr >
+                <td align="center" > {{u.Utilisateur_Id}}</td>
+                <td align="center" > {{u.email }}</td>
+                <td align="center" >
+                    {% for role in u.roles %}
+                        {% if role=="ROLE_USER" %}
+                            Utilisateur
+                        {% elseif role=="ROLE_VENDEUR" %}
+                            VENDEUR
+                        {% elseif role=="ROLE_ADMIN" %}
+                            Administrateur
+                        {% endif %}
+                    {% endfor %} </td>
+                <td align="center" > {{u.num}}</td>
+
+                <td align="center" >
+                    {% for activetoken in u.activation_token %}
+                        {% if activetoken is  null %}
+                                        Compte Activé
+                            {% else %}
+                                Compte désactivé
+                            {% endif %}
+
+                    {% endfor %}
+                   </td>
+
+                <td align="center" width="8" height="8">
+                    <script src="https://use.fontawesome.com/49b98aaeb5.js"></script>
+                    <a href="{{ path('supp',{'id_utilisateur': u.Utilisateur_Id}) }}">  <i class="fa fa-trash fa-1x" aria-hidden="true" style="color:brown"></i>  Supprimer   </a> <br>
+            </tr >
+            {% endfor %}
+        </table >
+    </div>
+            {% endblock %}

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Reclamation
  *
- * @ORM\Table(name="reclamation", indexes={@ORM\Index(name="Fk_utilisateurRec_Id", columns={"Fk_utilisateur"})})
+ * @ORM\Table(name="reclamation", indexes={@ORM\Index(name="Fk_terrainRec_Id", columns={"Fk_terrainRec_Id"}), @ORM\Index(name="Fk_utilisateurRec_Id", columns={"Fkutilisateur"})})
  * @ORM\Entity
  */
 class Reclamation
@@ -24,7 +24,7 @@ class Reclamation
     /**
      * @var string
      *
-     * @ORM\Column(name="Categorie", type="string", length=5, nullable=false)
+     * @ORM\Column(name="Categorie", type="string", length=8, nullable=false)
      */
     private $categorie;
 
@@ -36,14 +36,24 @@ class Reclamation
     private $contenu;
 
     /**
+     * @var \Terrain
+     *
+     * @ORM\ManyToOne(targetEntity="Terrain")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="Fk_terrainRec_Id", referencedColumnName="Terrain_Id")
+     * })
+     */
+    private $fkTerrainrec;
+
+    /**
      * @var \Utilisateur
      *
      * @ORM\ManyToOne(targetEntity="Utilisateur")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="Fk_utilisateur", referencedColumnName="Utilisateur_Id")
+     *   @ORM\JoinColumn(name="Fkutilisateur", referencedColumnName="Utilisateur_Id")
      * })
      */
-    private $fkUtilisateur;
+    private $fkutilisateur;
 
 
 }

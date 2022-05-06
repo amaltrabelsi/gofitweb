@@ -22,16 +22,6 @@ class Abonnementbus
     private $abonnementbusId;
 
     /**
-     * @var \Utilisateur
-     *
-     * @ORM\ManyToOne(targetEntity="Utilisateur")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="FK_user", referencedColumnName="Utilisateur_Id")
-     * })
-     */
-    private $fkUser;
-
-    /**
      * @var \Business
      *
      * @ORM\ManyToOne(targetEntity="Business")
@@ -40,6 +30,16 @@ class Abonnementbus
      * })
      */
     private $fkBusiness;
+
+    /**
+     * @var \Utilisateur
+     *
+     * @ORM\ManyToOne(targetEntity="Utilisateur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="FK_user", referencedColumnName="Utilisateur_Id")
+     * })
+     */
+    private $fkUser;
 
 
 }

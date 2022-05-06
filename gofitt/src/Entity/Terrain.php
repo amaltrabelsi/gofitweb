@@ -45,16 +45,16 @@ class Terrain
     /**
      * @var string
      *
-     * @ORM\Column(name="Kid_Friendly", type="string", length=20, nullable=false)
+     * @ORM\Column(name="contact", type="string", length=50, nullable=false)
      */
-    private $kidFriendly;
+    private $contact;
 
     /**
-     * @var float
+     * @var string
      *
-     * @ORM\Column(name="Prix_Res", type="float", precision=10, scale=0, nullable=false)
+     * @ORM\Column(name="prix", type="string", length=50, nullable=false)
      */
-    private $prixRes;
+    private $prix;
 
 
 }

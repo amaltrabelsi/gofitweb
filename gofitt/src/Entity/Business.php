@@ -80,9 +80,9 @@ class Business
     /**
      * @var string|null
      *
-     * @ORM\Column(name="Tel_Fix", type="string", length=10, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="Tel_Fix", type="string", length=10, nullable=true, options={"default"="'NULL'"})
      */
-    private $telFix = 'NULL';
+    private $telFix = '\'NULL\'';
 
     /**
      * @var string

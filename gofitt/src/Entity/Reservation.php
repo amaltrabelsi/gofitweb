@@ -50,16 +50,6 @@ class Reservation
     private $infosSupp;
 
     /**
-     * @var \Terrain
-     *
-     * @ORM\ManyToOne(targetEntity="Terrain")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="FK_terrain", referencedColumnName="Terrain_Id")
-     * })
-     */
-    private $fkTerrain;
-
-    /**
      * @var \Utilisateur
      *
      * @ORM\ManyToOne(targetEntity="Utilisateur")
@@ -78,6 +68,16 @@ class Reservation
      * })
      */
     private $fkService;
+
+    /**
+     * @var \Terrain
+     *
+     * @ORM\ManyToOne(targetEntity="Terrain")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="FK_terrain", referencedColumnName="Terrain_Id")
+     * })
+     */
+    private $fkTerrain;
 
 
 }

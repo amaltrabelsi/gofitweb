@@ -73,4 +73,40 @@ class UtilisateurRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findbyrole($role)
+    {
+        return $this->createQueryBuilder('u')
+            ->where('u.roles = :roles')
+            ->setParameter('role',$role)
+            ->getQuery()
+            ->getResult();
+    }
+    /**
+     * @return User[]
+     */
+    public function triSujetASC(){
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.email','ASC')
+            ->getQuery()
+            ->getResult();
+    }
+    /**
+     * @return User[]
+     */
+    public function triSujetDESC(){
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.email','DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+
+    public function searchusers($role)
+    {
+        return $this->createQueryBuilder('u')
+            ->andWhere('u.roles LIKE :x')
+            ->setParameter('x', '%'.$$role.'%')
+            ->getQuery()
+            ->execute();
+    }
 }

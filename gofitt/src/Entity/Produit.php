@@ -66,9 +66,9 @@ class Produit
     /**
      * @var string|null
      *
-     * @ORM\Column(name="Path_Image", type="string", length=150, nullable=true, options={"default"="NULL"})
+     * @ORM\Column(name="Path_Image", type="string", length=150, nullable=true, options={"default"="'NULL'"})
      */
-    private $pathImage = 'NULL';
+    private $pathImage = '\'NULL\'';
 
     /**
      * @var int|null
