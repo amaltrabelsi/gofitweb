@@ -1,0 +1,48 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Gestion des Reclamations{% endblock %}
+
+{% block body %}
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td,
+        th {
+            border: 0px solid black;
+            border-collapse: collapse;
+            text-align: left;
+        }
+    </style>
+    <script src="https://use.fontawesome.com/49b98aaeb5.js"></script>
+    <!-- End -->
+    <center>
+        <i class="fa fa-comments fa-3x" aria-hidden="true" style="color:#6495ed"></i>
+        <FONT face="Helvetica" size="8" color="#6495ed" >    Tables des Reclamation
+            <br> </FONT></center>
+
+<a  href="{{ path('excel') }}">  <i   class="fa fa-file-excel-o fa-1.5x" aria-hidden="true" style="color:#6495ed"></i>
+    {% for r in reclamation  %}
+    <table border="0" align="center">
+        <th>
+        <td>
+            <i class="fa fa-send fa-1.3x" aria-hidden="true" style="color:#6495ed"> De </i>  {{r.Fkutilisateur}}
+            <br>
+            <i class="fa fa-list-alt fa-1.3x" aria-hidden="true" style="color:#6495ed">  Terrain :  </i>  {{ r.FkterrainRecId}}
+            <br>
+            <i class="fa fa-file-text fa-1.3x" aria-hidden="true" style="color:#6495ed">   Contenu :</i>{{r.Contenu}}
+            <br>
+            <i class="fa fa-user fa-1.3x" aria-hidden="true" style="color:#6495ed">  Id Reclamation : </i> {{r.ReclamationId}}
+        </td>
+
+        <td> <center>
+                <a href="{{ path('suppp',{'idreclamation': r.ReclamationId}) }}"> <i class="fa fa-trash fa-1x" aria-hidden="true" style="color:brown"> </i> Supprimer </a>
+                <a href="{{ path('modifier', {'id':r.ReclamationId}) }}"><i class="fa fa-edit fa-1x" aria-hidden="true" style="color:brown"></i>  Modifier </a>
+
+            </center> </td>
+        </th>
+        <hr noshade style="width:900px; color:blue; height:0px; text-align:left; border:1px solid blue;">
+        {%endfor %}
+
+    </table>
+{% endblock %}
