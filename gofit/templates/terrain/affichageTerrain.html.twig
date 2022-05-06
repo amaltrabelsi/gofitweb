@@ -1,0 +1,40 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Gestion des Terrains{% endblock %}
+
+{% block body %}
+
+    <script src="https://use.fontawesome.com/49b98aaeb5.js"></script>
+    <!-- End -->
+    <center>
+        <i class="fa fa-comments fa-3x" aria-hidden="true" style="color:#6495ed"></i>
+        <FONT face="Helvetica" size="8" color="#6495ed" >    Tables des terrain
+            <br> </FONT></center>
+<center>
+    <a href="{{ path('Ajouterterrain') }}">  <i class="fa fa-plus fa-1x" aria-hidden="true" style="color:blue"></i>  Ajouter Terrain   </a> <br>
+</center>
+    {% for r in Terrain  %}
+    <table>
+        <!--  -->
+        <td><img src="{{ asset('uploads/images/' ~ r.image )}}" alt="" width="180px" height="180px"></td>
+        <td>
+            <i class="fa fa-list-ol fa-1.3x" aria-hidden="true" style="color:#6495ed"> Referance </i>  {{r.terrainId}} <br>
+            <i class="fa fa-pencil-square-o fa-1.3x" aria-hidden="true" style="color:#6495ed">  Nom </i>  {{ r.nomTerrain }} <br>
+            <i class="fa fa-file-text fa-1.3x" aria-hidden="true" style="color:#6495ed">   Description </i>{{r.description}} <br>
+            <i class="fa fa-check fa-1.3x" aria-hidden="true" style="color:#6495ed">  Activité : </i> {{r.activitie}} <br>
+            <i class="fa fa-check fa-1.3x" aria-hidden="true" style="color:#6495ed">  Region : </i> {{r.region}} <br>
+            <i class="fa fa-phone fa-1.3x" aria-hidden="true" style="color:#6495ed">  Contact </i>{{ r.contact }} <br>
+            <i class="fa fa-money fa-1.3x" aria-hidden="true" style="color:#6495ed">  Prix </i>{{ r.prix }} <br>
+        </td>
+            <td>
+
+        <script src="https://use.fontawesome.com/49b98aaeb5.js"></script>
+        <a href="{{ path('suppterrain',{'Idsupp': r.terrainId}) }}">  <i class="fa fa-trash fa-1x" aria-hidden="true" style="color:brown"></i>  Supprimer   </a> <br>
+        <a href="{{ path('mod', {'Id': r.terrainId}) }}"> <i class="fa fa-edit fa-1x" aria-hidden="true" style="color:brown"></i>   Modifier   </a> </td>
+
+        </td>
+
+        </tr {%endfor %}>
+
+    </table>
+{% endblock %}
