@@ -105,5 +105,181 @@ class Utilisateur
      */
     private $reponse;
 
+    /**
+     * @return string
+     */
+    public function getDateDeNaissance(): string
+    {
+        return $this->dateDeNaissance;
+    }
+
+    /**
+     * @param string $dateDeNaissance
+     */
+    public function setDateDeNaissance(string $dateDeNaissance): void
+    {
+        $this->dateDeNaissance = $dateDeNaissance;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUtilisateurId(): int
+    {
+        return $this->utilisateurId;
+    }
+
+    /**
+     * @param int $utilisateurId
+     */
+    public function setUtilisateurId(int $utilisateurId): void
+    {
+        $this->utilisateurId = $utilisateurId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNom(): string
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param string $nom
+     */
+    public function setNom(string $nom): void
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrenom(): string
+    {
+        return $this->prenom;
+    }
+
+    /**
+     * @param string $prenom
+     */
+    public function setPrenom(string $prenom): void
+    {
+        $this->prenom = $prenom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSexe(): string
+    {
+        return $this->sexe;
+    }
+
+    /**
+     * @param string $sexe
+     */
+    public function setSexe(string $sexe): void
+    {
+        $this->sexe = $sexe;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRegion(): string
+    {
+        return $this->region;
+    }
+
+    /**
+     * @param string $region
+     */
+    public function setRegion(string $region): void
+    {
+        $this->region = $region;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdresse(): string
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * @param string $adresse
+     */
+    public function setAdresse(string $adresse): void
+    {
+        $this->adresse = $adresse;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+
+    /**
+     * @param string $role
+     */
+    public function setRole(string $role): void
+    {
+        $this->role = $role;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMdp(): string
+    {
+        return $this->mdp;
+    }
+
+    /**
+     * @param string $mdp
+     */
+    public function setMdp(string $mdp): void
+    {
+        $this->mdp = $mdp;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNumero(): string
+    {
+        return $this->numero;
+    }
+
+    /**
+     * @param string $numero
+     */
+    public function setNumero(string $numero): void
+    {
+        $this->numero = $numero;
+    }
+
 
 }

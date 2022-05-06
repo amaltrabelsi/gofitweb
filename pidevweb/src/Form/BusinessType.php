@@ -92,7 +92,7 @@ class BusinessType extends AbstractType
                     'class'=>"form-control"
                 ]
             ])
-            ->add('telFix',TelType::class,[
+            ->add('telFix',TextType::class,[
                 'label'=>"Teléphone Fix",
                 'attr'=>[
                     "placeholder"=>"+216 xxx xxx xx

@@ -1,31 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ActualiteController!{% endblock %}
-
+{% block title %}Actualités!{% endblock %}
+{% block header %}
+ {% for message in app.flashes('success') %}
+     <div class="alert alert-message">
+         {{ message }}
+     </div>
+ {% endfor %}
+{% endblock %}
 {% block body %}
 
 
-<div class="row">
+    <div class="empty"></div>
+    extra &nbsp;&nbsp; space
+    <div class="empty"></div>
 
-    <div  style="display: flex;align-items: center;
-        justify-content: center;margin-top: 150px; margin-left: 100px;padding: 10px;">
+    extra &nbsp;&nbsp; space
+    <div class="empty"></div>
 
-        <!-- column -->
+    extra &nbsp;&nbsp; space
+    <div class="page-wrapper" style="min-height: 656px;">
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-themecolor">Gérer les Actualités</h3>
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <a href="{{ '/createActualite' }}" class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down"> Ajouter Actualité</a>
+                </div>
+            </div>
 
-        <div class="card">
-            <div class="card-body">
-                <h2 class="card-title">Actualité</h2>
-                <h6 class="card-subtitle">Gérer vos actualités </h6>
-                <div class="row">
-                    <div class="col-12">
+            <div class="row">
+                <div class="col-12">
 
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex">
-                                    <div>
-                                        <h4 class="card-title"><span class="lstick"></span>Actualités</h4>
-                                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div>
+                                    <h4 class="card-title"><span class="lstick"></span>Actualités</h4>
                                 </div>
+                            </div>
+
 
                                 <table class="table">
 <tr>
@@ -61,9 +82,11 @@
                         class="btn waves-effect waves-light btn-info hidden-md-down text-white"
                             class="btn" href="{{ path('editActualite',{'id':Actualite.actualiteId}) }}">
 
+
                         <i
                                 class="mdi mdi-account-edit"></i>
                     </a>
+
                 </td>
               
             </tr>
@@ -72,10 +95,11 @@
         </tbody>
                     </table>
                             </div></div></div></div></div></div></div>
+
     <div>
         <div class="col-md-7 align-self-center">
-            <a href="/createActualite" class="btn waves-effect waves-light btn-primary pull-right hidden-sm-down"> Ajouter </a>
         </div>
-    </div></div>
+    </div><
+</div>
 
 {% endblock %}

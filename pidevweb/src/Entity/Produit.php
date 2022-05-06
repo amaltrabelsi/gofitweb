@@ -1,14 +1,15 @@
 <?php
 
 namespace App\Entity;
-
+use App\Repository\ProduitRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Produit
  *
  * @ORM\Table(name="produit", indexes={@ORM\Index(name="FK_businessPp", columns={"FK_Businees"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ProduitRepository")
+
  */
 class Produit
 {
@@ -22,8 +23,12 @@ class Produit
     private $produitId;
 
     /**
-     * @var string
+     * @Assert\NotBlank(message=" La refernce doit etre non vide")
+     * @Assert\Length(
+     *      min = 5,
+     *      minMessage=" Entrer une reference au mini de 5 caracteres"
      *
+     *     )
      * @ORM\Column(name="Ref_P", type="string", length=50, nullable=false)
      */
     private $refP;
@@ -41,12 +46,16 @@ class Produit
      * @ORM\Column(name="Quantite", type="integer", nullable=false)
      */
     private $quantite;
-
     /**
-     * @var string
-     *
+     * @Assert\NotBlank(message="description  doit etre non vide")
+     * @Assert\Length(
+     *      min = 7,
+     *      max =5000,
+     *      minMessage = "doit etre >=7 ",
+     *      maxMessage = "doit etre <=5000" )
      * @ORM\Column(name="Description", type="text", length=65535, nullable=false)
      */
+
     private $description;
 
     /**
@@ -64,11 +73,11 @@ class Produit
     private $categorie;
 
     /**
-     * @var string|null
+     * @var string
      *
      * @ORM\Column(name="Path_Image", type="string", length=150, nullable=true, options={"default"="NULL"})
      */
-    private $pathImage = 'NULL';
+    private $pathImage;
 
     /**
      * @var int|null
@@ -101,5 +110,192 @@ class Produit
      */
     private $fkBusinees;
 
+    /**
+     * @return int
+     */
+    public function getProduitId(): int
+    {
+        return $this->produitId;
+    }
 
+    /**
+     * @param int $produitId
+     */
+    public function setProduitId(int $produitId): void
+    {
+        $this->produitId = $produitId;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getRefP(): ?string
+    {
+        return $this->refP;
+    }
+
+    /**
+     * @param string $refP
+     */
+    public function setRefP(string $refP): void
+    {
+        $this->refP = $refP;
+    }
+
+
+    public function getPathImage()
+    {
+        return $this->pathImage;
+    }
+
+
+    public function setPathImage($pathImage): self
+    {
+        $this->pathImage = $pathImage;
+        return $this;
+    }
+
+    /**
+     * @return float|null
+     */
+    public function getPrixUni(): ?float
+    {
+        return $this->prixUni;
+    }
+
+    /**
+     * @param float $prixUni
+     */
+    public function setPrixUni(float $prixUni): void
+    {
+        $this->prixUni = $prixUni;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getQuantite(): ?int
+    {
+        return $this->quantite;
+    }
+
+    /**
+     * @param int $quantite
+     */
+    public function setQuantite(int $quantite): void
+    {
+        $this->quantite = $quantite;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getNomProduit(): ?string
+    {
+        return $this->nomProduit;
+    }
+
+    /**
+     * @param string $nomProduit
+     */
+    public function setNomProduit(string $nomProduit): void
+    {
+        $this->nomProduit = $nomProduit;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCategorie(): ?string
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * @param string $categorie
+     */
+    public function setCategorie(string $categorie): void
+    {
+        $this->categorie = $categorie;
+    }
+
+
+    /**
+     * @return int|null
+     */
+    public function getNote(): ?int
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param int|null $note
+     */
+    public function setNote(?int $note): void
+    {
+        $this->note = $note;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getTotalnote(): ?int
+    {
+        return $this->totalnote;
+    }
+
+    /**
+     * @param int|null $totalnote
+     */
+    public function setTotalnote(?int $totalnote): void
+    {
+        $this->totalnote = $totalnote;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getOccurence(): ?int
+    {
+        return $this->occurence;
+    }
+
+    /**
+     * @param int|null $occurence
+     */
+    public function setOccurence(?int $occurence): void
+    {
+        $this->occurence = $occurence;
+    }
+
+    /**
+     * @return \Business|null
+     */
+    public function getFkBusinees(): ?Business
+    {
+        return $this->fkBusinees;
+    }
+
+
+    public function setFkBusinees(?Business $fkBusinees): self
+    {
+        $this->fkBusinees = $fkBusinees;
+        return $this;
+    }
 }

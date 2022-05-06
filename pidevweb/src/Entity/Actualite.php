@@ -5,13 +5,17 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vangrg\ProfanityBundle\Validator\Constraints as ProfanityAssert;
+use App\Repository\ActualiteRepository;
 
 /**
  * Actualite
  *
  * @ORM\Table(name="actualite", indexes={@ORM\Index(name="FK_UserC_Id", columns={"FK_user_Id"})})
  * @ORM\Entity
+ *
+ * @ORM\Entity(repositoryClass=ActualiteRepository::class)
  */
+
 class Actualite
 {
     /**
@@ -31,7 +35,6 @@ class Actualite
      *      max = 50,
      *      minMessage = "Veuillez saisir un titre valide >=10",
      *      maxMessage = "Veuillez saisir un titre valide <=50" )
-     * @ProfanityAssert\ProfanityCheck
      * @ORM\Column(name="Titre", type="string", length=50, nullable=false)
      */
     public $titre;
@@ -44,7 +47,6 @@ class Actualite
      *      max = 200,
      *      minMessage = "Veuillez saisir une description valide >=10",
      *      maxMessage = "Veuillez saisir une description valide <=200" )
-     * @ProfanityAssert\ProfanityCheck
      * @ORM\Column(name="Description", type="string", length=200, nullable=false)
      */
     public $description;
@@ -57,7 +59,6 @@ class Actualite
      *      max = 6500,
      *      minMessage = "Veuillez saisir un contenu valide >=10",
      *      maxMessage = "Veuillez saisir un contenu valide <=6500" )
-     * @ProfanityAssert\ProfanityCheck
      * @ORM\Column(name="Contenu", type="text", length=65535, nullable=false)
      */
     public $contenu;
@@ -85,6 +86,112 @@ class Actualite
      * })
      */
     public $fkUser;
+    public function getPathImage()
+    {
+        return $this->pathImage;
+    }
+
+
+    public function setPathImage($pathImage): self
+    {
+        $this->pathImage = $pathImage;
+        return $this;
+    }
+    /**
+     * @return int
+     */
+    public function getActualiteId(): int
+    {
+        return $this->actualiteId;
+    }
+
+    /**
+     * @param int $produitId
+     */
+    public function setActualiteId(int $actualiteId): void
+    {
+        $this->actualiteId= $actualiteId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContenu(): ?string
+    {
+        return $this->contenu;
+    }
+
+    /**
+     * @param string $contenu
+     */
+    public function setContenu(string $contenu): void
+    {
+        $this->contenu = $contenu;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCategorie(): ?string
+    {
+        return $this->categorie;
+    }
+
+    /**
+     * @param string $categorie
+     */
+    public function setCategorie(string $categorie): void
+    {
+        $this->categorie = $categorie;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitre(): ?string
+    {
+        return $this->titre;
+    }
+
+    /**
+     * @param string $titre
+     */
+    public function setTitre(string $titre): void
+    {
+        $this->titre = $titre;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return \Utilisateur
+     */
+    public function getFkUser(): \Utilisateur
+    {
+        return $this->fkUser;
+    }
+
+    /**
+     * @param \Utilisateur $fkUser
+     */
+    public function setFkUser(\Utilisateur $fkUser): void
+    {
+        $this->fkUser = $fkUser;
+    }
 
 
 }

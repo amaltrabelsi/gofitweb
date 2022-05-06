@@ -2,8 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Actualite;
 use App\Entity\Business;
-use App\Form\BusinessType;use Symfony\Component\Form\AbstractType;
+use App\Form\BusinessType;
+use App\Repository\ActualiteRepository;
+use App\Repository\BusinessRepository;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -95,4 +100,21 @@ class BusinessController extends AbstractController
 
 
     }
+    /**
+     * @param BusinessRepository $repository
+     * @return Response
+     * @Route("/businessFront",name="businessFront")
+     */
+    public function Affiche(BusinessRepository $repository,Request $request, PaginatorInterface $paginator){
+        $donnees = $this->getDoctrine()->getRepository(Business::class)->findAll();
+        $businesses = $paginator->paginate(
+            $donnees, // Requête contenant les données à paginer (ici nos articles)
+            $request->query->getInt('page', 1), // Numéro de la page en cours, passé dans l'URL, 1 si aucune page
+            3// Nombre de résultats par page
+        );
+
+        return $this->render('business/businessFront.html.twig',
+            ['Business'=>$businesses]);
+    }
+
 }

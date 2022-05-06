@@ -75,7 +75,7 @@
                 <!-- Topbar header - style you can find in pages.scss -->
                 <!-- ============================================================== -->
                 <header class="topbar">
-                    <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                    <nav class="navbar navbar-expand-lg navbar-dark navbar-bg {{ app.session.flashbag.peek('success')|length > 0 ? '' : 'mb-5' }}">
                         <!-- ============================================================== -->
                         <!-- Logo -->
                         <!-- ============================================================== -->
@@ -156,7 +156,8 @@
                                                 class="mdi mdi-help-circle"></i><span class="hide-menu">Services</span></a></li>
                             </ul>
                             <div class="text-center mt-4">
-                                <a  class="btn waves-effect waves-light btn-info hidden-md-down text-white"> GoFit</a>
+
+                                <a href="/mailer" class="btn waves-effect waves-light btn-info hidden-md-down text-white"> Envoyer Email</a>
                             </div>
                         </nav>
                         <!-- End Sidebar navigation -->

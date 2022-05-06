@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Actualite;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
@@ -55,7 +56,12 @@ class ActualiteType extends AbstractType
         )))
 
 
-            ->add('pathImage')
+            ->add('pathImage',FileType::class,array('data_class' => null)
+
+            )
+
+
+
             ->add('Ajouter',SubmitType::class ,  [
                 'attr' => ['class' => "btn btn-primary"
            ] ])

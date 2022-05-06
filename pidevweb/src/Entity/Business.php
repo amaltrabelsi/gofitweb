@@ -194,4 +194,229 @@ class Business
     {
         $this->pathImage = $pathImage;
     }
+
+    /**
+     * @return int
+     */
+    public function getBusinessId(): int
+    {
+        return $this->businessId;
+    }
+
+    /**
+     * @param int $businessId
+     */
+    public function setBusinessId(int $businessId): void
+    {
+        $this->businessId = $businessId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomBusiness(): ?string
+    {
+        return $this->nomBusiness;
+    }
+
+    /**
+     * @param string $nomBusiness
+     */
+    public function setNomBusiness(string $nomBusiness): void
+    {
+        $this->nomBusiness = $nomBusiness;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomGerant(): ?string
+    {
+        return $this->nomGerant;
+    }
+
+    /**
+     * @param string $nomGerant
+     */
+    public function setNomGerant(string $nomGerant): void
+    {
+        $this->nomGerant = $nomGerant;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrenomGerant(): ?string
+    {
+        return $this->prenomGerant;
+    }
+
+    /**
+     * @param string $prenomGerant
+     */
+    public function setPrenomGerant(string $prenomGerant): void
+    {
+        $this->prenomGerant = $prenomGerant;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRegion(): ?string
+    {
+        return $this->region;
+    }
+
+    /**
+     * @param string $region
+     */
+    public function setRegion(string $region): void
+    {
+        $this->region = $region;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    /**
+     * @param string $adresse
+     */
+    public function setAdresse(string $adresse): void
+    {
+        $this->adresse = $adresse;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateFondation(): ?\DateTimeInterface
+    {
+        return $this->dateFondation;
+    }
+
+    /**
+     * @param \DateTime $dateFondation
+     */
+    public function setDateFondation(\DateTime $dateFondation): void
+    {
+        $this->dateFondation = $dateFondation;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTelPortable(): ?string
+    {
+        return $this->telPortable;
+    }
+
+    /**
+     * @param string $telPortable
+     */
+    public function setTelPortable(string $telPortable): void
+    {
+        $this->telPortable = $telPortable;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTelFix(): ?string
+    {
+        return $this->telFix;
+    }
+
+    /**
+     * @param string|null $telFix
+     */
+    public function setTelFix(?string $telFix): void
+    {
+        $this->telFix = $telFix;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getNote(): ?int
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param int|null $note
+     */
+    public function setNote(?int $note): void
+    {
+        $this->note = $note;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTotalnote(): int
+    {
+        return $this->totalnote;
+    }
+
+    /**
+     * @param int $totalnote
+     */
+    public function setTotalnote(int $totalnote): void
+    {
+        $this->totalnote = $totalnote;
+    }
+
+    /**
+     * @return int
+     */
+    public function getOccurence(): int
+    {
+        return $this->occurence;
+    }
+
+    /**
+     * @param int $occurence
+     */
+    public function setOccurence(int $occurence): void
+    {
+        $this->occurence = $occurence;
+    }
+
+    /**
+     * @return \Utilisateur
+     */
+    public function getUser(): \Utilisateur
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param \Utilisateur $user
+     */
+    public function setUser(\Utilisateur $user): void
+    {
+        $this->user = $user;
+    }
+
 }
